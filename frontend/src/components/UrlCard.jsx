@@ -5,7 +5,7 @@ import QRModal from './QRModal';
 import toast from 'react-hot-toast';
 import {
   Copy, Check, Trash2, BarChart2, QrCode, ExternalLink,
-  Clock, MousePointerClick, Edit2, X, Save, Calendar
+  Clock, MousePointerClick, Edit2, X, Save, Calendar, Globe
 } from 'lucide-react';
 import { formatDistanceToNow, format } from 'date-fns';
 
@@ -152,6 +152,15 @@ export default function UrlCard({ url, onDelete, onUpdate }) {
               title="QR Code"
             >
               <QrCode size={14} />
+            </button>
+
+            <button
+              id={`public-stats-btn-${url._id}`}
+              className="btn btn-secondary btn-sm"
+              onClick={() => window.open(`/stats/${url.shortCode}`, '_blank')}
+              title="Public Stats Page"
+            >
+              <Globe size={14} />
             </button>
 
             <button
