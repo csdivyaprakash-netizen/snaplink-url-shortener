@@ -8,7 +8,9 @@ A full-stack URL shortener with real-time analytics, custom aliases, QR codes, a
 
 ## 🎥 Demo Video
 
-> **Add your Loom/YouTube link here after recording**
+[![SnapLink Demo](https://img.youtube.com/vi/q86kn1i2kJY/0.jpg)](https://youtu.be/q86kn1i2kJY)
+
+▶️ **https://youtu.be/q86kn1i2kJY**
 
 ---
 
