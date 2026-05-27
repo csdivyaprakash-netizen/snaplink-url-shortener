@@ -192,24 +192,8 @@ VITE_BASE_URL=http://localhost:5000
 4. Analytics data is stored indefinitely (no auto-purge).
 5. `nanoid` v3 is used for CommonJS compatibility with `require()`.
 
----
 
-## 🧠 AI Planning Document
 
-### Tools Used
-- **Antigravity (AI agent by Google DeepMind)** — used for full application planning and code generation
-
-### Planning Steps
-1. Read and analyzed the hackathon problem statement
-2. Designed architecture diagram and MongoDB schema
-3. Planned all API endpoints, middleware stack, and folder structure
-4. Generated backend: models (User, Url, Visit), controllers, routes, middleware
-5. Generated frontend: design system, all pages, components, API client
-6. Integrated JWT auth, React Router, Axios interceptors
-7. Added all bonus features: QR codes, charts, expiry, geolocation, public stats
-8. Wrote full README documentation
-
----
 
 ## 📁 Project Structure
 
