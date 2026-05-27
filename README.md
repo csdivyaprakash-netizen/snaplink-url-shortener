@@ -2,13 +2,42 @@
 
 > This project is a part of a hackathon run by https://katomaran.com
 
-A full-stack URL shortener with real-time analytics, custom aliases, QR codes, and more. Built for the **Katomaran Hackathon (March 2026)**.
+A full-stack URL shortener with real-time analytics, custom aliases, QR codes, and more. Built for the **Katomaran Hackathon (May 2026)**.
 
 ---
 
-## 🚀 Live Demo
+## 🎥 Demo Video
 
-> Record your Loom/YouTube demo link here after recording.
+> **Add your Loom/YouTube link here after recording**
+
+---
+
+## 📸 Screenshots
+
+### Landing Page
+![Landing Page](./screenshots/landing.png)
+
+### Dashboard
+![Dashboard](./screenshots/dashboard.png)
+
+### Analytics
+![Analytics](./screenshots/analytics.png)
+
+### QR Code
+![QR Code](./screenshots/qrcode.png)
+
+---
+
+## 🗄️ Database Entries (MongoDB Atlas)
+
+### Users Collection
+![Users DB](./screenshots/db-users.png)
+
+### URLs Collection
+![URLs DB](./screenshots/db-urls.png)
+
+### Visits Collection
+![Visits DB](./screenshots/db-visits.png)
 
 ---
 
@@ -45,7 +74,7 @@ A full-stack URL shortener with real-time analytics, custom aliases, QR codes, a
                │ Mongoose ODM
                ▼
 ┌─────────────────────────────────────────────┐
-│                 MongoDB                      │
+│                 MongoDB Atlas                │
 │  users   — auth credentials (bcrypt hashed)│
 │  urls    — short URLs, click count, expiry  │
 │  visits  — per-click analytics records      │
@@ -60,23 +89,23 @@ A full-stack URL shortener with real-time analytics, custom aliases, QR codes, a
 - ✅ User signup and login (bcrypt + JWT)
 - ✅ Protected dashboard routes
 - ✅ Each user manages only their own URLs
-- ✅ URL shortening with unique 7-char codes
+- ✅ URL shortening with unique 7-char codes (nanoid)
 - ✅ Server-side 302 redirect
 - ✅ URL validation before shortening
-- ✅ Dashboard: view all URLs, original/short/date/clicks
+- ✅ Dashboard: view all URLs with original/short/date/clicks
 - ✅ Delete URLs
-- ✅ Copy short URL button
+- ✅ Copy short URL to clipboard
 - ✅ Click count tracking
-- ✅ Visit timestamps
-- ✅ Analytics page: total clicks, last visited, recent history
+- ✅ Visit timestamps recorded
+- ✅ Analytics page: total clicks, last visited, recent visit history
 
 ### Bonus
 - ✅ Custom aliases for short URLs
 - ✅ QR code generation (downloadable PNG)
 - ✅ Expiry date for links
-- ✅ Daily click trend chart (recharts BarChart)
+- ✅ Daily click trend chart (Recharts BarChart — last 30 days)
 - ✅ Edit destination URL
-- ✅ Public stats page (`/stats/:shortCode`)
+- ✅ Public stats page (`/stats/:shortCode`) — no login required
 - ✅ Geolocation analytics (country/city via ip-api.com)
 - ✅ Country breakdown pie chart
 
@@ -87,9 +116,9 @@ A full-stack URL shortener with real-time analytics, custom aliases, QR codes, a
 | Layer | Technology |
 |---|---|
 | Frontend | React 18 + Vite |
-| Styling | Vanilla CSS (custom design system, dark mode) |
+| Styling | Vanilla CSS (custom dark mode design system) |
 | Backend | Node.js + Express |
-| Database | MongoDB + Mongoose |
+| Database | MongoDB Atlas + Mongoose |
 | Auth | JWT + bcryptjs |
 | Short codes | nanoid |
 | URL validation | validator.js |
@@ -105,12 +134,12 @@ A full-stack URL shortener with real-time analytics, custom aliases, QR codes, a
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB (local or Atlas)
+- MongoDB Atlas account (free tier works)
 
 ### 1. Clone the repo
 ```bash
-git clone <your-repo-url>
-cd url-shortener
+git clone https://github.com/csdivyaprakash-netizen/snaplink-url-shortener.git
+cd snaplink-url-shortener
 ```
 
 ### 2. Backend Setup
@@ -126,12 +155,11 @@ npm run dev
 ```bash
 cd frontend
 npm install
-# Edit .env if needed (VITE_API_URL)
 npm run dev
 ```
 
-Frontend runs on `http://localhost:5173`  
-Backend runs on `http://localhost:5000`
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:5000`
 
 ---
 
@@ -140,7 +168,7 @@ Backend runs on `http://localhost:5000`
 ### Backend `.env`
 ```
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/urlshortener
+MONGO_URI=mongodb+srv://<user>:<password>@cluster0.xxxxx.mongodb.net/urlshortener
 JWT_SECRET=your_super_secret_jwt_key
 BASE_URL=http://localhost:5000
 CLIENT_URL=http://localhost:5173
@@ -160,38 +188,49 @@ VITE_BASE_URL=http://localhost:5000
 2. Geolocation is done via the free `ip-api.com` API — best effort, failures are silently ignored.
 3. Passwords must be ≥ 6 characters. No password recovery flow (out of scope).
 4. Analytics data is stored indefinitely (no auto-purge).
-5. The `nanoid` package v3 is used (CommonJS compatible with `require()`).
+5. `nanoid` v3 is used for CommonJS compatibility with `require()`.
 
 ---
 
 ## 🧠 AI Planning Document
 
 ### Tools Used
-- **Antigravity (AI agent by Google DeepMind)** — used for full application generation
-  - Prompted to plan architecture, DB schema, API design, and folder structure
-  - Generated all backend and frontend code
-  - Provided detailed implementation plan as artifact
+- **Antigravity (AI agent by Google DeepMind)** — used for full application planning and code generation
 
 ### Planning Steps
-1. Read and analyzed hackathon problem statement PDF
-2. Created architecture diagram and DB schema
-3. Planned API endpoints, middleware, and folder structure
-4. Generated backend code: models, controllers, routes, middleware
-5. Generated frontend code: design system, pages, components
-6. Integrated routing, auth context, and API client
-7. Added bonus features: QR codes, charts, expiry, geolocation, public stats
+1. Read and analyzed the hackathon problem statement
+2. Designed architecture diagram and MongoDB schema
+3. Planned all API endpoints, middleware stack, and folder structure
+4. Generated backend: models (User, Url, Visit), controllers, routes, middleware
+5. Generated frontend: design system, all pages, components, API client
+6. Integrated JWT auth, React Router, Axios interceptors
+7. Added all bonus features: QR codes, charts, expiry, geolocation, public stats
+8. Wrote full README documentation
 
 ---
 
-## 📸 Sample Output
+## 📁 Project Structure
 
-> Add screenshots, DB entries, and logs here after recording the demo video.
-
----
-
-## 🎥 Demo Video
-
-> Add Loom or YouTube link here.
+```
+url-shortener/
+├── backend/
+│   └── src/
+│       ├── config/       → db.js
+│       ├── models/       → User.js, Url.js, Visit.js
+│       ├── controllers/  → authController.js, urlController.js
+│       ├── routes/       → auth.js, urls.js, redirect.js
+│       ├── middleware/   → auth.js, errorHandler.js
+│       └── index.js      → Express entry point
+├── frontend/
+│   └── src/
+│       ├── api/          → axios.js, auth.js, urls.js
+│       ├── components/   → Navbar, UrlCard, QRModal
+│       ├── context/      → AuthContext.jsx
+│       ├── pages/        → Landing, Login, Signup, Dashboard, Analytics, PublicStats
+│       └── index.css     → Full design system
+├── screenshots/          → App & DB screenshots
+└── README.md
+```
 
 ---
 
